@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using StorageApi.DbContext;
+
 namespace StorageApi
 {
     public class Program
@@ -13,6 +16,9 @@ namespace StorageApi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+            builder.Services.AddDbContext<ProductContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,6 +31,7 @@ namespace StorageApi
 
             app.UseAuthorization();
 
+            app.UseRouting();
 
             app.MapControllers();
 
