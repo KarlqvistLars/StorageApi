@@ -37,7 +37,8 @@ namespace StorageApi.Migrations
                 {
                     { 1, "Tools", 5, "Wooden handle.", "Hammer", 10, "A1" },
                     { 2, "Tools", 10, "The one with the flat head.", "Screwdriver", 5, "A2" },
-                    { 3, "Tools", 7, "The one with the adjustable jaw.", "Wrench", 15, "A3" }
+                    { 3, "Tools", 7, "The one with the adjustable jaw.", "Wrench", 15, "A3" },
+                    { 4, "Tools", 10, "The one with the thoots.", "Saw", 5, "A2" }
                 });
         }
 

@@ -11,7 +11,7 @@ using StorageApi.DbContext;
 namespace StorageApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20260608135217_Init")]
+    [Migration("20260608154633_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -88,6 +88,16 @@ namespace StorageApi.Migrations
                             Name = "Wrench",
                             Price = 15,
                             Shelf = "A3"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Category = "Tools",
+                            Count = 10,
+                            Description = "The one with the thoots.",
+                            Name = "Saw",
+                            Price = 5,
+                            Shelf = "A2"
                         });
                 });
 #pragma warning restore 612, 618

@@ -85,6 +85,16 @@ namespace StorageApi.Migrations
                             Name = "Wrench",
                             Price = 15,
                             Shelf = "A3"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Category = "Tools",
+                            Count = 10,
+                            Description = "The one with the thoots.",
+                            Name = "Saw",
+                            Price = 5,
+                            Shelf = "A2"
                         });
                 });
 #pragma warning restore 612, 618
