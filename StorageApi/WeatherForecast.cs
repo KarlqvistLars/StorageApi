@@ -1,4 +1,4 @@
-namespace StorageApi2
+namespace StorageApi
 {
     public class WeatherForecast
     {
