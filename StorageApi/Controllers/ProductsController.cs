@@ -13,12 +13,26 @@ public class ProductsController : ControllerBase
     {
         _context = context;
     }
-
-    // GET: api/Product
+    // GET: /api/products 
+    // GET: /api/products?category=Tools
+    // GET: /api/products?category=Tools&productname=Wrench
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> GetProduct()
+    public async Task<IActionResult> GetProduct([FromQuery] string? category, [FromQuery] string? productname)
     {
-        var products = await _context.Products
+        var query = _context.Products.AsQueryable();
+        if (!string.IsNullOrEmpty(category) || !string.IsNullOrEmpty(productname))
+        {
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(p => p.Category == category);
+            }
+            if (!string.IsNullOrEmpty(productname))
+            {
+                query = query.Where(p => p.Name.Contains(productname));
+            }
+        }
+
+        var products = await query
             .OrderBy(p => p.Name)
             .Select(p => new ProductDto {
                 Id = p.Id,
@@ -30,10 +44,8 @@ public class ProductsController : ControllerBase
                 Description = p.Description
             })
             .ToListAsync();
-
         return Ok(products);
     }
-
     // GET: api/Product/3
     [HttpGet("{id}")]
     public async Task<ActionResult<ProductDto>> GetProduct(int id)
@@ -57,7 +69,6 @@ public class ProductsController : ControllerBase
 
         return Ok(productDto);
     }
-
     // PUT: api/Product/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
@@ -97,7 +108,6 @@ public class ProductsController : ControllerBase
 
         return NoContent();
     }
-
     // POST: api/Product
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
@@ -118,7 +128,6 @@ public class ProductsController : ControllerBase
 
         return CreatedAtAction("GetProduct", new { id = product.Id }, product);
     }
-
     // DELETE: api/Product/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(int? id)
@@ -134,7 +143,6 @@ public class ProductsController : ControllerBase
 
         return NoContent();
     }
-
     // PATCH: api/Product/5
     [HttpPatch("{id}")]
     public async Task<IActionResult> PatchProduct(
@@ -181,7 +189,6 @@ public class ProductsController : ControllerBase
 
         return NoContent();
     }
-
     // GET: api/products/stats
     [HttpGet]
     [Route("stats")]
@@ -202,7 +209,6 @@ public class ProductsController : ControllerBase
         };
         return Ok(statsDto);
     }
-
     private bool ProductExists(int? id)
     {
         return _context.Products.Any(e => e.Id == id);
