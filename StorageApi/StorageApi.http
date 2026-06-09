@@ -51,3 +51,5 @@ Content-Type: application/json
 DELETE {{StorageApi_HostAddress}}/api/products/7
 
 ###
+
+GET {{StorageApi_HostAddress}}/api/products/stats

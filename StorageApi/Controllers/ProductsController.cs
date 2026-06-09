@@ -182,6 +182,27 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
+    // GET: api/products/stats
+    [HttpGet]
+    [Route("stats")]
+    public async Task<IActionResult> GetProductStats()
+    {
+        var totalProducts = await _context.Products.CountAsync();
+        var averagePrice = await _context.Products.AverageAsync(p => p.Price);
+        var totalValue = await _context.Products.SumAsync(p => p.Price * p.Count);
+        var categoryCounts = await _context.Products
+            .GroupBy(p => p.Category)
+            .Select(g => new { Category = g.Key, Count = g.Count() })
+            .ToListAsync();
+        var statsDto = new ProductStatsDto {
+            TotalProducts = totalProducts,
+            AveragePrice = averagePrice,
+            TotalValue = totalValue,
+            CategoryCounts = categoryCounts.ToDictionary(c => c.Category ?? "Unknown", c => c.Count)
+        };
+        return Ok(statsDto);
+    }
+
     private bool ProductExists(int? id)
     {
         return _context.Products.Any(e => e.Id == id);
