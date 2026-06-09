@@ -30,7 +30,7 @@ namespace StorageApi
                     Description = "An ASP.NET Core Web API for managing storage products",
                     Contact = new OpenApiContact {
                         Name = "Lars Karlqvist",
-                        Email = "le.karlqvist@gmail.com"
+                        Email = "info@mail.com"
                     }
                 });
             });
