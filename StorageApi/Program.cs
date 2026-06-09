@@ -1,14 +1,15 @@
-
 using Microsoft.EntityFrameworkCore;
-using StorageApi.DbContext;
 
-namespace StorageApi
+namespace StorageApi2
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connectionString = builder.Configuration.GetConnectionString("StorageApi2Context") ?? throw new InvalidOperationException("Connection string 'StorageApi2Context' not found.");
+
+            builder.Services.AddDbContext<StorageApiContext>(options => options.UseSqlServer(connectionString));
 
             // Add services to the container.
 
@@ -16,8 +17,8 @@ namespace StorageApi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
-            builder.Services.AddDbContext<ProductContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<StorageApiContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("StorageApi2Context")));
 
             var app = builder.Build();
 
@@ -31,7 +32,6 @@ namespace StorageApi
 
             app.UseAuthorization();
 
-            app.UseRouting();
 
             app.MapControllers();
 

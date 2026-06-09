@@ -1,19 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace StorageApi.Models
+﻿namespace StorageApi2.Models
 {
     public class Product
     {
-        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; } = 0;
         public string Category { get; set; }
         public string Shelf { get; set; }
         public int Count { get; set; }
-        public string Description { get; set; } = string.Empty;
-
-        public Product(int id, string name, int price, string category, string shelf, int count, string description)
+        public string Description { get; set; }
+        public Product(int id, string name, decimal price, string category, string shelf, int count, string description)
         {
             Id = id;
             Name = name;

@@ -3,14 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StorageApi.DbContext;
 
 #nullable disable
 
-namespace StorageApi.Migrations
+namespace StorageApi2.Migrations
 {
-    [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(StorageApiContext))]
+    partial class StorageApi2ContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +20,7 @@ namespace StorageApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("StorageApi.Models.Product", b =>
+            modelBuilder.Entity("StorageApi2.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,8 +43,8 @@ namespace StorageApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Shelf")
                         .IsRequired()
@@ -53,7 +52,7 @@ namespace StorageApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
 
                     b.HasData(
                         new
@@ -63,7 +62,7 @@ namespace StorageApi.Migrations
                             Count = 5,
                             Description = "Wooden handle.",
                             Name = "Hammer",
-                            Price = 10,
+                            Price = 10m,
                             Shelf = "A1"
                         },
                         new
@@ -73,7 +72,7 @@ namespace StorageApi.Migrations
                             Count = 10,
                             Description = "The one with the flat head.",
                             Name = "Screwdriver",
-                            Price = 5,
+                            Price = 5m,
                             Shelf = "A2"
                         },
                         new
@@ -83,7 +82,7 @@ namespace StorageApi.Migrations
                             Count = 7,
                             Description = "The one with the adjustable jaw.",
                             Name = "Wrench",
-                            Price = 15,
+                            Price = 15m,
                             Shelf = "A3"
                         },
                         new
@@ -93,7 +92,11 @@ namespace StorageApi.Migrations
                             Count = 10,
                             Description = "The one with the thoots.",
                             Name = "Saw",
+<<<<<<< HEAD:StorageApi/Migrations/StorageApi2ContextModelSnapshot.cs
+                            Price = 5m,
+=======
                             Price = 5,
+>>>>>>> 2ef3b6492edbc0316b8b661e1ce9c87a199f0f49:StorageApi/Migrations/ProductContextModelSnapshot.cs
                             Shelf = "A2"
                         });
                 });

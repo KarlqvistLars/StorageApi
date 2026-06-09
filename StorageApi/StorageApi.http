@@ -1,9 +1,46 @@
-@StorageApi_HostAddress = http://localhost:5182
+@StorageApi2_HostAddress = http://localhost:5007
 
-GET {{StorageApi_HostAddress}}/weatherforecast/
+GET {{StorageApi2_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+GET {{StorageApi2_HostAddress}}/api/products
 
-GET {{StorageApi_HostAddress}}/api/products
-Accept: application/json
+### 
+GET {{StorageApi2_HostAddress}}/api/products/4
+
+###
+POST {{StorageApi2_HostAddress}}/api/products
+Content-Type: application/json
+{
+  "name": "Plank",
+  "Price": 15,
+  "Category": "Materials",
+  "Shelf": "B2",
+  "Count": 1,
+  "Description": "The wood."
+}
+
+###
+
+PUT {{StorageApi2_HostAddress}}/api/products/4
+Content-Type: application/json
+{
+  "id": 4,
+  "name": "Saw",
+  "price": 16.00,
+  "category": "Tools",
+  "shelf": "A2",
+  "count": 10,
+  "description": "The one with the thoots. Price updated."
+}
+
+###
+
+PATCH {{StorageApi2_HostAddress}}/api/products/4
+Content-Type: application/json
+{
+  "price": 10.00,
+  "category": "Tools",
+  "description": "The one with the thoots. Price updated again."
+}

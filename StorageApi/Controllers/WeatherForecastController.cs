@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace StorageApi.Controllers
+namespace StorageApi2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
