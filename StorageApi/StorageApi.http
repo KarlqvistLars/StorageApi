@@ -28,7 +28,7 @@ Content-Type: application/json
 {
   "id": 4,
   "name": "Saw",
-  "price": 16.00,
+  "price": 18.00,
   "category": "Tools",
   "shelf": "A2",
   "count": 10,

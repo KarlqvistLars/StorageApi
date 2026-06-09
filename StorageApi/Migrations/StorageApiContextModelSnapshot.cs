@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace StorageApi2.Migrations
+namespace StorageApi.Migrations
 {
     [DbContext(typeof(StorageApiContext))]
-    partial class StorageApi2ContextModelSnapshot : ModelSnapshot
+    partial class StorageApiContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -92,11 +92,7 @@ namespace StorageApi2.Migrations
                             Count = 10,
                             Description = "The one with the thoots.",
                             Name = "Saw",
-<<<<<<< HEAD:StorageApi/Migrations/StorageApi2ContextModelSnapshot.cs
                             Price = 5m,
-=======
-                            Price = 5,
->>>>>>> 2ef3b6492edbc0316b8b661e1ce9c87a199f0f49:StorageApi/Migrations/ProductContextModelSnapshot.cs
                             Shelf = "A2"
                         });
                 });

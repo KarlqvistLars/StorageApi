@@ -7,15 +7,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace StorageApi2.Migrations
+namespace StorageApi.Migrations
 {
-<<<<<<<< HEAD:StorageApi/Migrations/20260608173245_Init.Designer.cs
     [DbContext(typeof(StorageApiContext))]
-    [Migration("20260608173245_Init")]
-========
-    [DbContext(typeof(ProductContext))]
-    [Migration("20260608154633_Init")]
->>>>>>>> 2ef3b6492edbc0316b8b661e1ce9c87a199f0f49:StorageApi/Migrations/20260608154633_Init.Designer.cs
+    [Migration("20260609064906_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -100,11 +95,7 @@ namespace StorageApi2.Migrations
                             Count = 10,
                             Description = "The one with the thoots.",
                             Name = "Saw",
-<<<<<<<< HEAD:StorageApi/Migrations/20260608173245_Init.Designer.cs
                             Price = 5m,
-========
-                            Price = 5,
->>>>>>>> 2ef3b6492edbc0316b8b661e1ce9c87a199f0f49:StorageApi/Migrations/20260608154633_Init.Designer.cs
                             Shelf = "A2"
                         });
                 });
