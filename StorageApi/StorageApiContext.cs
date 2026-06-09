@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using StorageApi2.Models;
+using StorageApi.Models;
 
 public class StorageApiContext : DbContext
 {
@@ -7,7 +7,7 @@ public class StorageApiContext : DbContext
     : base(options)
     {
     }
-    public DbSet<StorageApi2.Models.Product> Product { get; set; } = default!;
+    public DbSet<StorageApi.Models.Product> Products { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

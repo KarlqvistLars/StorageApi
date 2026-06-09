@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace StorageApi2
+namespace StorageApi
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var connectionString = builder.Configuration.GetConnectionString("StorageApi2Context") ?? throw new InvalidOperationException("Connection string 'StorageApi2Context' not found.");
+            var connectionString = builder.Configuration.GetConnectionString("StorageApiContext") ?? throw new InvalidOperationException("Connection string 'StorageApiContext' not found.");
 
             builder.Services.AddDbContext<StorageApiContext>(options => options.UseSqlServer(connectionString));
 
@@ -18,7 +18,7 @@ namespace StorageApi2
             builder.Services.AddOpenApi();
 
             builder.Services.AddDbContext<StorageApiContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("StorageApi2Context")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("StorageApiContext")));
 
             var app = builder.Build();
 
@@ -31,7 +31,6 @@ namespace StorageApi2
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

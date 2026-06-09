@@ -1,4 +1,4 @@
-﻿namespace StorageApi2.Models
+﻿namespace StorageApi.Models
 {
     public class Product
     {

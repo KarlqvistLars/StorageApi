@@ -10,7 +10,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "StorageApi2": {
+    "StorageApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
