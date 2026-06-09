@@ -20,21 +20,6 @@ Content-Type: application/json
   "Count": 20,
   "Description": "The wood pillars."
 }
-
-###
-
-PUT {{StorageApi_HostAddress}}/api/products/3
-Content-Type: application/json
-{
-  "id": 3,
-  "name": "Wrench",
-  "price": 12.50,
-  "category": "Tools",
-  "shelf": "A3",
-  "count": 7,
-  "description": "The one with the adjustable jaw."
-}
-
 ###
 
 PATCH {{StorageApi_HostAddress}}/api/products/3
@@ -51,5 +36,10 @@ Content-Type: application/json
 DELETE {{StorageApi_HostAddress}}/api/products/7
 
 ###
-
 GET {{StorageApi_HostAddress}}/api/products/stats
+
+###
+GET {{StorageApi_HostAddress}}/api/products/?category=Materials
+
+###
+GET {{StorageApi_HostAddress}}/api/products?category=Tools&productname=Wrench
