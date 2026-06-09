@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
+
 
 namespace StorageApi
 {
@@ -17,8 +19,28 @@ namespace StorageApi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+            builder.Services.AddMvc();
+
+            builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddSwaggerGen(options => {
+                options.SwaggerDoc("v1", new OpenApiInfo {
+                    Version = "v1",
+                    Title = "Storage API",
+                    Description = "An ASP.NET Core Web API for managing storage products",
+                    Contact = new OpenApiContact {
+                        Name = "Lars Karlqvist",
+                        Email = "le.karlqvist@gmail.com"
+                    }
+                });
+            });
+
             builder.Services.AddDbContext<StorageApiContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("StorageApiContext")));
+
+            builder.Services
+                .AddControllers()
+                .AddNewtonsoftJson();
 
             var app = builder.Build();
 
@@ -27,6 +49,9 @@ namespace StorageApi
             {
                 app.MapOpenApi();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
 
