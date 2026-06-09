@@ -7,43 +7,47 @@ Accept: application/json
 GET {{StorageApi_HostAddress}}/api/products
 
 ### 
-GET {{StorageApi_HostAddress}}/api/products/4
+GET {{StorageApi_HostAddress}}/api/products/3
 
 ###
 POST {{StorageApi_HostAddress}}/api/products
 Content-Type: application/json
 {
-  "name": "Plank",
-  "Price": 15,
+  "name": "Beam",
+  "Price": 25,
   "Category": "Materials",
   "Shelf": "B2",
-  "Count": 1,
-  "Description": "The wood."
+  "Count": 20,
+  "Description": "The wood pillars."
 }
 
 ###
 
-PUT {{StorageApi_HostAddress}}/api/products/4
+PUT {{StorageApi_HostAddress}}/api/products/3
 Content-Type: application/json
 {
-  "id": 4,
-  "name": "Saw",
-  "price": 18.00,
+  "id": 3,
+  "name": "Wrench",
+  "price": 12.50,
   "category": "Tools",
-  "shelf": "A2",
-  "count": 10,
-  "description": "The one with the thoots. Price updated."
+  "shelf": "A3",
+  "count": 7,
+  "description": "The one with the adjustable jaw."
 }
 
 ###
 
 PATCH {{StorageApi_HostAddress}}/api/products/3
 Content-Type: application/json
-{
-  "price": 10.00,
-  "category": "Tools",
-  "description": "The one with the thoots. Price updated again."
-}
+[
+  {
+    "op": "replace",
+    "path": "/price",
+    "value": 20
+  }
+]
 
 ### 
-DELETE {{StorageApi_HostAddress}}/api/products/4
+DELETE {{StorageApi_HostAddress}}/api/products/7
+
+###
